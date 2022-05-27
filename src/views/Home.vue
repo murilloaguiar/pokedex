@@ -97,33 +97,55 @@ body {
 </style>
 
 <style scoped>
+/* ---- Classes de entrada ------*/
 .v-enter-from{
    /*determina o estado inicial do elemento html*/
+   /* opacity: 0; */
+
+   transform: translateX(-150px);
    opacity: 0;
+
 }
 
 .v-enter-active{
    /*determina o tempo de transição do estado inicial do elemento html*/
-   transition: opacity 1s;
+   /*transition: opacity 1s;*/
+
+   transition: all 1s;
 
 }
 
 .v-enter-to{
+   /* opacity: 1; */
+
+   transform: translateX(0px);
    opacity: 1;
 }
 
+/* ---- Classes de saida ------*/
+
 .v-leave-from{
    /*determina o estado inicial do elemento html*/
+   /* opacity: 1; */
+
+   transform: translateX(0px);
    opacity: 1;
+
 }
 
 .v-leave-active{
    /*determina o tempo de transição do estado inicial do elemento html*/
-   transition: opacity 0.5s;
+   /* transition: opacity 0.5s; */
+
+   transition: all 1s;
+
 
 }
 
 .v-leave-to{
+   /* opacity: 0; */
+
+   transform: translateX(150px);
    opacity: 0;
 }
 
