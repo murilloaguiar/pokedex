@@ -104,12 +104,27 @@ body {
 
 .v-enter-active{
    /*determina o tempo de transição do estado inicial do elemento html*/
-   transition: opacity 2s;
+   transition: opacity 1s;
 
 }
 
 .v-enter-to{
    opacity: 1;
+}
+
+.v-leave-from{
+   /*determina o estado inicial do elemento html*/
+   opacity: 1;
+}
+
+.v-leave-active{
+   /*determina o tempo de transição do estado inicial do elemento html*/
+   transition: opacity 0.5s;
+
+}
+
+.v-leave-to{
+   opacity: 0;
 }
 
 
