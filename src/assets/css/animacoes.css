@@ -38,3 +38,28 @@
    transform: translateX(150px);
    opacity: 0;
 }
+
+/* ---------- ZOOM ---------- */
+.zoom-enter-from {
+   transform: scale(0);
+}
+
+.zoom-enter-active{
+   transition: transform 1s;
+}
+
+.zoom-enter-to{
+   transform: scale(1);
+}
+
+.zoom-leave-from{
+   transform: scale(1);
+}
+
+.zoom-leave-active{
+   transition: transform 1s;
+}
+
+.zoom-leave-to{
+   transform: scale(0);
+}

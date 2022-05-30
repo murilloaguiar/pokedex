@@ -14,7 +14,7 @@
                -->
                
                <!-- Tag transition suporta apenas a transição e animação de um único elemento html ou componente -->
-               <transition name="slide">
+               <transition name="zoom">
                   <!-- Elemento nãoe é adicionado do dom inicialmente. -->
                   <img src="@/assets/imgs/pokemons/001.png" v-if="exibir">
                </transition>
