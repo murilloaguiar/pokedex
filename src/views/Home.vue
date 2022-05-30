@@ -14,10 +14,19 @@
                -->
                
                <!-- Tag transition suporta apenas a transição e animação de um único elemento html ou componente -->
-               <transition>
+               <transition name="slide">
                   <!-- Elemento nãoe é adicionado do dom inicialmente. -->
                   <img src="@/assets/imgs/pokemons/001.png" v-if="exibir">
                </transition>
+
+               <div class="evolucoes">
+                  <transition name="fade">
+                     <img src="@/assets/imgs/pokemons/003.png" v-if="exibir">
+                  </transition>
+                  <transition name="fade">
+                     <img src="@/assets/imgs/pokemons/002.png" v-if="exibir">
+                  </transition>
+               </div>
               
             </div>
           </div>
@@ -98,7 +107,23 @@ body {
 
 <style scoped>
 /* ---- Classes de entrada ------*/
-.v-enter-from{
+.fade-enter-from{
+   /*determina o estado inicial do elemento html*/
+   opacity: 0; 
+
+}
+
+.fade-enter-active{
+   /*determina o tempo de transição do estado inicial do elemento html*/
+   transition: opacity 1s;
+
+}
+
+.fade-enter-to{
+   opacity: 1; 
+}
+
+.slide-enter-from{
    /*determina o estado inicial do elemento html*/
    /* opacity: 0; */
 
@@ -107,7 +132,7 @@ body {
 
 }
 
-.v-enter-active{
+.slide-enter-active{
    /*determina o tempo de transição do estado inicial do elemento html*/
    /*transition: opacity 1s;*/
 
@@ -115,7 +140,7 @@ body {
 
 }
 
-.v-enter-to{
+.slide-enter-to{
    /* opacity: 1; */
 
    transform: translateX(0px);
@@ -124,7 +149,27 @@ body {
 
 /* ---- Classes de saida ------*/
 
-.v-leave-from{
+.fade-leave-from{
+   /*determina o estado inicial do elemento html*/
+   opacity: 1; 
+
+
+
+}
+
+.fade-leave-active{
+   /*determina o tempo de transição do estado inicial do elemento html*/
+   transition: opacity 0.5s; 
+
+}
+
+.fade-leave-to{
+   opacity: 0; 
+
+
+}
+
+.slide-leave-from{
    /*determina o estado inicial do elemento html*/
    /* opacity: 1; */
 
@@ -133,7 +178,7 @@ body {
 
 }
 
-.v-leave-active{
+.slide-leave-active{
    /*determina o tempo de transição do estado inicial do elemento html*/
    /* transition: opacity 0.5s; */
 
@@ -142,7 +187,7 @@ body {
 
 }
 
-.v-leave-to{
+.slide-leave-to{
    /* opacity: 0; */
 
    transform: translateX(150px);
@@ -246,6 +291,20 @@ body {
 
 .detalhes {
   margin: 20px 30px 20px 30px;
+}
+
+.evolucoes{
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   height: 70px;
+}
+
+.evolucoes img{
+   cursor:pointer;
+   max-width: 100%;
+   max-height: 100%;
+   float: right;
 }
 
 </style>
