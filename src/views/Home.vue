@@ -25,7 +25,14 @@
                 <transition name="fade">
                   <img src="@/assets/imgs/pokemons/003.png" v-if="exibir" />
                 </transition>
-                <transition name="fade">
+                <transition 
+                  enter-from-class="entrada-estado-inicial"
+                  enter-active-class="transicao"
+                  enter-to-class="entrada-estado-final"
+                  leave-from-class="saida-estado-inicial"
+                  leave-active-class="transicao"
+                  leave-to-class="saida-estado-final"
+                >
                   <img src="@/assets/imgs/pokemons/002.png" v-if="exibir" />
                 </transition>
               </div>
