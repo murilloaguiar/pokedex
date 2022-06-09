@@ -13,10 +13,17 @@
               -->
 
               <!-- Tag transition suporta apenas a transição e animação de um único elemento html ou componente 
-              atributo type definindo que o tempo de execução deve respeitar a propriedade transition 
+              
+              Além de classes css a tag transition dispara gatilhos, podendo chamar métodos
 
-              atributo duration define manualmente o tempo da animação -->
-              <transition name="pulo" :duration="{enter: 1000, leave: 1500}">
+              atributo type define que o tempo de execução deve respeitar a propriedade css especificada 
+
+              atributo duration define manualmente o tempo da animação para entrada e saida -->
+              <transition 
+                enter-active-class="animate__animated animate__bounceIn"                  
+                leave-active-class="animate__animated animate__bounceOut"
+              >
+
                 <!-- Elemento nãoe é adicionado do dom inicialmente. -->
                 <img src="@/assets/imgs/pokemons/001.png" v-if="exibir" />
               </transition>
