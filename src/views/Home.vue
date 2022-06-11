@@ -11,15 +11,10 @@
               <!-- Imagem é adicionada no dom inicialmente, sua exibição que muda
               <img src="@/assets/imgs/pokemons/001.png" v-show="exibir"> 
               -->
-
-              <!-- Tag transition suporta apenas a transição e animação de um único elemento html ou componente 
-              
-              Além de classes css a tag transition dispara gatilhos, podendo chamar métodos
-
-              atributo type define que o tempo de execução deve respeitar a propriedade css especificada 
-
-              atributo duration define manualmente o tempo da animação para entrada e saida -->
               <transition 
+                @after-enter="exibirEvolucoesTransicao"
+                @before-leave="ocultarEvolucoesTransicao"
+                
                 enter-active-class="animate__animated animate__bounceIn"                  
                 leave-active-class="animate__animated animate__bounceOut"
               >
@@ -30,17 +25,10 @@
 
               <div class="evolucoes">
                 <transition name="fade">
-                  <img src="@/assets/imgs/pokemons/003.png" v-if="exibir" />
+                  <img src="@/assets/imgs/pokemons/003.png" v-if="exibirEvolucoes" />
                 </transition>
-                <transition 
-                  enter-from-class="entrada-estado-inicial"
-                  enter-active-class="transicao"
-                  enter-to-class="entrada-estado-final"
-                  leave-from-class="saida-estado-inicial"
-                  leave-active-class="transicao"
-                  leave-to-class="saida-estado-final"
-                >
-                  <img src="@/assets/imgs/pokemons/002.png" v-if="exibir" />
+                <transition name="fade">
+                  <img src="@/assets/imgs/pokemons/002.png" v-if="exibirEvolucoes" />
                 </transition>
               </div>
             </div>
@@ -109,7 +97,22 @@ export default {
   name: "Home",
   data: () => ({
     exibir: false,
+    exibirEvolucoes: false
   }),
+
+  methods:{
+    exibirEvolucoesTransicao(){
+      this.exibirEvolucoes = true
+    },
+
+    ocultarEvolucoesTransicao(){
+      this.exibirEvolucoes = false
+    }
+
+  }
+
+
+
 };
 </script>
 
