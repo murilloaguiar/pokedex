@@ -20,7 +20,7 @@
               >
 
                 <!-- Elemento nãoe é adicionado do dom inicialmente. -->
-                <img src="@/assets/imgs/pokemons/001.png" v-if="exibir" />
+                <img :src="require(`@/assets/imgs/pokemons/${pokemon.imagem}`)" v-if="exibir" />
               </transition>
 
               <div class="evolucoes">
@@ -76,7 +76,7 @@
         <div class="row">
           <div class="pokedex-catalogo">
             <!-- início listagem dinâmica -->
-            <div v-for="(pokemon) in pokemons" :key="pokemon.id" :class="`cartao-pokemon bg-${pokemon.tipo}`" @click="exibir = !exibir">
+            <div v-for="(pokemon) in pokemons" :key="pokemon.id" :class="`cartao-pokemon bg-${pokemon.tipo}`" @click="analisarPokemon(pokemon)">
               <h1>{{pokemon.id}} {{pokemon.nome}} </h1>
               <span>{{pokemon.tipo}}</span>
               <div class="cartao-pokemon-img">
@@ -98,6 +98,7 @@ export default {
   data: () => ({
     exibir: false,
     exibirEvolucoes: false,
+    pokemon:{},
     pokemons: [
       { id: 1, nome: 'Bulbasaur', tipo: 'grama', imagem: '001.png', evolucoes: [2,3] },
       { id: 2, nome: 'Ivysaur', tipo: 'grama', imagem: '002.png', evolucoes: [3] },
@@ -127,6 +128,11 @@ export default {
 
     ocultarEvolucoesTransicao(){
       this.exibirEvolucoes = false
+    },
+
+    analisarPokemon(pokemon){
+      this.pokemon = pokemon
+      this.exibir = !this.exibir
     }
 
   }
