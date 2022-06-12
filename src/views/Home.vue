@@ -54,8 +54,20 @@
             </nav>
 
             <div class="detalhes">
-              <!-- exibe dados de acordo com o menu de navegação -->             
-              <router-view></router-view>
+              <!-- exibe dados de acordo com o menu de navegação --> 
+
+              <!-- <transition
+                enter-active-class="animate__animated animate__fadeInDown"
+              >
+                <router-view></router-view>
+              </transition> -->
+              
+              <router-view v-slot="{Component}">
+                <transition enter-active-class="animate__animated animate__fadeInDown">
+                  <component :is="Component"></component>
+                </transition>
+              </router-view>
+              
 
             </div>
           </div>
