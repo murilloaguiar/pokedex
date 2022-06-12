@@ -34,10 +34,29 @@
           <div class="card-footer">
             <nav class="nav nav-pills nav-fill">
               <!-- menu de navegação -->
+              <routerLink class="nav-item nav-link text-white"
+                  :to="{path: '/sobre'}" 
+                  exact-active-class="active">
+                    Sobre
+                </routerLink>
+
+                <routerLink class="nav-item nav-link text-white"
+                  :to="{path: '/status'}" 
+                  exact-active-class="active">
+                    Status
+                </routerLink>
+
+                <routerLink class="nav-item nav-link text-white" 
+                  :to="{path: '/habilidades'}" 
+                  exact-active-class="active">
+                    Habilidades
+                </routerLink>
             </nav>
 
             <div class="detalhes">
-              <!-- exibe dados de acordo com o menu de navegação -->
+              <!-- exibe dados de acordo com o menu de navegação -->             
+              <router-view></router-view>
+
             </div>
           </div>
         </div>
