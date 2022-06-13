@@ -8,7 +8,13 @@
           <tr v-for="(habilidade, index) in pokemon.habilidades" :key="index">
             <td>{{ habilidade }}</td>
             <td class="d-flex justify-content-end">
-              <button type="button" class="btn btn-danger btn-sm">x</button>
+              <button 
+                type="button" 
+                class="btn btn-danger btn-sm"
+                @click="$emit('removerHabilidade', index)"
+              >
+                x
+              </button>
             </td>
           </tr>
         </tbody>
@@ -17,6 +23,8 @@
         type="text"
         class="form-control"
         placeholder="Adicionar habilidade"
+        v-model="habilidade"
+        @keyup.enter="adicionarHabilidade"
       />
     </div>
   </div>
@@ -28,6 +36,21 @@ export default {
   props: {
     pokemon: Object,
   },
+
+  data:()=>({
+    habilidade: ""
+  }),
+
+  methods: {
+    //não podemos modificar props dentro dos componentes
+    adicionarHabilidade(){
+      //emissao direta de um evento do compoente filho para o componente pai
+      this.$emit('adicionarHabilidade', this.habilidade)
+      this.habilidade = ""
+    }
+  }
+
+
 };
 </script>
 

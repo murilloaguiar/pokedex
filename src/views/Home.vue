@@ -62,7 +62,12 @@
                 <router-view></router-view>
               </transition> -->
               
-              <router-view v-slot="{Component}" :pokemon="pokemon">
+              <router-view 
+                v-slot="{Component}" 
+                :pokemon="pokemon"
+                @adicionarHabilidade="adicionarHabilidade"
+                @removerHabilidade="removerHabilidade"
+              >
                 <transition enter-active-class="animate__animated animate__fadeInDown">
                   <component :is="Component"></component>
                 </transition>
@@ -185,6 +190,16 @@ export default {
         this.pokemon = {}
       }
 
+    },
+
+    adicionarHabilidade(habilidade){
+      console.log('estamos no componente pai - home - com a habilidade', habilidade)
+      if(this.pokemon.habilidades) this.pokemon.habilidades.push(habilidade)
+    },
+
+    removerHabilidade(index){
+      if(this.pokemon.habilidades[index])
+      this.pokemon.habilidades.splice(index,1)
     }
 
   }
