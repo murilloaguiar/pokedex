@@ -5,20 +5,27 @@
     <div>
       <table class="table text-white">
         <tbody>
-          <tr v-for="(habilidade, index) in pokemon.habilidades" :key="index">
-            <td>{{ habilidade }}</td>
-            <td class="d-flex justify-content-end">
-              <button 
-                type="button" 
-                class="btn btn-danger btn-sm"
-                @click="$emit('removerHabilidade', index)"
-              >
-                x
-              </button>
-            </td>
-          </tr>
+
+          <transition-group name="lista">
+            <!-- Para as animações funcionarem corretamente é necessário que cada elemento tenha um key exclusiva e não reutilizável-->
+            <tr v-for="(habilidade, index) in pokemon.habilidades" :key="habilidade">
+              <td>{{ habilidade }}</td>
+              <td class="d-flex justify-content-end">
+                <button 
+                  type="button" 
+                  class="btn btn-danger btn-sm"
+                  @click="$emit('removerHabilidade', index)"
+                >
+                  x
+                </button>
+              </td>
+            </tr>
+
+          </transition-group>
+          
         </tbody>
       </table>
+
       <input
         type="text"
         class="form-control"

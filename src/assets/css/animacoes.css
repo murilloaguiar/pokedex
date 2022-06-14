@@ -186,3 +186,35 @@
 .transicao{
    transition: all 2s;
 }
+
+/*Animação para o transition group efeito de slide*/
+.lista-enter-from{
+   transform: translateX(-150px);
+   opacity: 0;
+
+}
+
+.lista-enter-active{
+   transition: all 1s;
+}
+
+.lista-leave-active{
+   transition: all 1s;
+   position: absolute; /*overflow view port*/
+}
+
+.lista-move{ /*define um animação suave para a saida de algum elemento do transition group*/
+   transition: all 1s;
+}
+
+.lista-enter-to, .lista-leave-from{
+
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+
+.lista-leave-to{
+   transform: translateX(150px);
+   opacity: 0;
+}
