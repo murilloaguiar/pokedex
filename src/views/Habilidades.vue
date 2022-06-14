@@ -8,7 +8,7 @@
 
           <transition-group name="lista">
             <!-- Para as animações funcionarem corretamente é necessário que cada elemento tenha um key exclusiva e não reutilizável-->
-            <tr v-for="(habilidade, index) in pokemon.habilidades" :key="habilidade">
+            <tr v-for="(habilidade, index) in habilidadesOrdenadas" :key="habilidade">
               <td>{{ habilidade }}</td>
               <td class="d-flex justify-content-end">
                 <button 
@@ -54,6 +54,14 @@ export default {
       //emissao direta de um evento do compoente filho para o componente pai
       this.$emit('adicionarHabilidade', this.habilidade)
       this.habilidade = ""
+    }
+  },
+
+  computed: {
+    habilidadesOrdenadas(){
+      let habilidades = this.pokemon.habilidades
+      return habilidades.sort() 
+      //método nativo do javascript que ordena um array por ordem alfabética
     }
   }
 
