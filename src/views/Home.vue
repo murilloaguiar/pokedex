@@ -90,9 +90,10 @@
 
         <div class="row">
           <div class="col">
-            <select class="form-select">
-              <option>Id crescente</option>
-              <option>Id decrescrente</option>
+            <select class="form-select" v-model="ordenacao">
+              <option value="" disabled>Ordenar pokemons</option>
+              <option value="1">Id crescente</option>
+              <option value="2">Id decrescrente</option>
               <option>De A - Z</option>
             </select>
           </div>
@@ -143,12 +144,53 @@
 <script>
 export default {
   name: "Home",
+
   data: () => ({
     exibir: false,
     exibirEvolucoes: false,
     pokemon:{},
-    pokemons: {}
+    pokemons: {},
+    ordenacao: ''
   }),
+
+  watch:{
+    ordenacao(valorNovo){
+      //método sort
+      //return 1 oara indicar que a ordem está correta
+      //return -1 para indicar que a ordem está incorreta
+      //return 0 para indicar que a são iguais ( nada deve ser feito)
+
+      if(valorNovo == 1){
+
+        this.pokemons.sort((proximo, atual)=>{
+          if(atual.id<proximo.id){
+            return 1
+          }else if(atual.id>proximo.id){
+            return -1
+          }
+
+          return 0
+
+        })
+        
+      }else if(valorNovo == 2){
+
+        this.pokemons.sort((proximo, atual)=>{
+          if(atual.id<proximo.id){
+            return -1
+          }else if(atual.id>proximo.id){
+            return 1
+          }
+
+          return 0
+
+        })
+
+
+      }
+
+    }
+  },
 
   created(){
     fetch('http://localhost:3000/pokemons')
