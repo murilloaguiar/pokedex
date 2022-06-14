@@ -94,7 +94,7 @@
               <option value="" disabled>Ordenar pokemons</option>
               <option value="1">Id crescente</option>
               <option value="2">Id decrescrente</option>
-              <option>De A - Z</option>
+              <option value="3">De A - Z</option>
             </select>
           </div>
 
@@ -172,7 +172,7 @@ export default {
           return 0
 
         })
-        
+
       }else if(valorNovo == 2){
 
         this.pokemons.sort((proximo, atual)=>{
@@ -187,6 +187,19 @@ export default {
         })
 
 
+      }else if(valorNovo == 3){
+
+        this.pokemons.sort((proximo, atual)=>{
+
+          if (atual.nome<proximo.nome) {
+            return 1
+          } else if(atual.nome>proximo.nome) {
+            return -1
+          }
+
+          return 0
+
+        })
       }
 
     }
