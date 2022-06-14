@@ -100,12 +100,23 @@
           </div>
 
           <div class="col">
-            <input
+            <!-- <input
               type="text"
               class="form-control"
               placeholder="Pesquisar pokémon"
+              v-model="nomePokemon"
+              @keyup.enter="filtrarPokemonsPorNome"
+            /> -->
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Pesquisar pokémon watch"
+              v-model="nomePokemon2"
+              @keyup.enter="filtrarPokemonsPorNome"
             />
           </div>
+
         </div>
 
         <div class="row">
@@ -153,7 +164,9 @@ export default {
     exibirEvolucoes: false,
     pokemon:{},
     pokemons: {},
-    ordenacao: ''
+    ordenacao: '',
+    nomePokemon:'',
+    nomePokemon2: ''
   }),
 
   watch:{
@@ -217,6 +230,14 @@ export default {
 
       }
 
+    },
+
+    nomePokemon2(valorNovo){
+      fetch(`http://localhost:3000/pokemons?nome_like=${valorNovo}`)
+        .then(response => response.json())
+        .then(data => {
+          this.pokemons = data
+        })
     }
   },
 
@@ -270,6 +291,14 @@ export default {
     removerHabilidade(index){
       if(this.pokemon.habilidades[index])
       this.pokemon.habilidades.splice(index,1)
+    },
+
+    filtrarPokemonsPorNome(){
+      fetch(`http://localhost:3000/pokemons?nome_like=${this.nomePokemon}`)
+        .then(response => response.json())
+        .then(data => {
+          this.pokemons = data
+        })
     }
 
   }
