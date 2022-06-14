@@ -218,3 +218,8 @@
    transform: translateX(150px);
    opacity: 0;
 }
+
+/*classes de animação para ordenação*/
+.ordenacao-move{ /* quando houver mudança no grupo */
+   transition: all 2s; /*deve haver uma transição entre o estado final e inicial que dure 2s */
+}

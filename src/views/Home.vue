@@ -111,28 +111,30 @@
         <div class="row">
           <div class="pokedex-catalogo">
             <!-- início listagem dinâmica -->
-            <div 
-              v-for="(pokemon) in pokemons" :key="pokemon.id" 
-              :class="`cartao-pokemon bg-${pokemon.tipo}`" 
-              @click="analisarPokemon(pokemon)"
-            >
+            <transition-group name="ordenacao">
+              <div 
+                v-for="(pokemon) in pokemons" :key="pokemon.id" 
+                :class="`cartao-pokemon bg-${pokemon.tipo}`" 
+                @click="analisarPokemon(pokemon)"
+              >
 
-              <h1>{{pokemon.id}} {{pokemon.nome}} </h1>
-              <span>{{pokemon.tipo}}</span>
+                <h1>{{pokemon.id}} {{pokemon.nome}} </h1>
+                <span>{{pokemon.tipo}}</span>
 
-              <div class="cartao-pokemon-img">
+                <div class="cartao-pokemon-img">
 
-                <!-- O componente transition está dividido em duas grandes fases, animação de entrada e a animação de saida. Mas o disparo da aimação de entrada e o disparo da animação de saída dependem do estado da diretiva v-if e v-show associadas ao elemento encapsulado pelo transition 
-                ou então quando o componente dinâmico modifca o compenente que ele renderiza
-                a prop appear dispara automaticamente a transição de entrada
-                -->
-                <transition appear enter-active-class="animate__animated animate__fadeInDown">
-                  <img :src="require(`@/assets/imgs/pokemons/${pokemon.imagem}`)"/>
-                </transition>
-                
+                  <!-- O componente transition está dividido em duas grandes fases, animação de entrada e a animação de saida. Mas o disparo da aimação de entrada e o disparo da animação de saída dependem do estado da diretiva v-if e v-show associadas ao elemento encapsulado pelo transition 
+                  ou então quando o componente dinâmico modifca o compenente que ele renderiza
+                  a prop appear dispara automaticamente a transição de entrada
+                  -->
+                  <transition appear enter-active-class="animate__animated animate__fadeInDown">
+                    <img :src="require(`@/assets/imgs/pokemons/${pokemon.imagem}`)"/>
+                  </transition>
+                  
+                </div>
+
               </div>
-
-            </div>
+            </transition-group>
             <!-- fim listagem dinâmica -->
           </div>
         </div>
